@@ -1,5 +1,12 @@
 import pandas as pd
-import yfinance as yf
+import pandas_datareader as pdr
 
-spy = yf.download("QQQ")
-print(spy)
+spy = pdr.get_data_yahoo("SPY")
+
+spy.plot()
+
+spy["Adj Close"].plot()
+spy.describe()
+
+ret = spy.pct_change()
+ret.describe()
